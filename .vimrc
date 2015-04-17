@@ -11,8 +11,8 @@ set magic "除了$ . * ^之外都要反斜杠转义
 set nu   "显示行号
 set ru   "右下角显示行列
 set pastetoggle=<F2> "按F2切换显示行号
-"set cul "高亮行
-"set cuc "高亮列
+set cul "高亮行
+set cuc "高亮列
 
 "--文件编码
 set enc=utf-8 "设置默认编码utf-8
@@ -58,12 +58,22 @@ set matchtime=1 "单位十分之一秒
 set showcmd    " 命令行显示输入的命令
 set showmode   " 命令行显示vim当前模式
 set report=0   "告诉我们哪一行被改过
+set laststatus=2
+""let g:airline#extensions#hunks#enabled=1 
+""let g:airline#extensions#tabline#left_sep = ' '
+""let g:airline#extensions#tabline#left_alt_sep = '|'
+""function! AirlineInit()
+""    let g:airline_section_a = airline#section#create(['mode','branch'])
+""    let g:airline_section_b = airline#section#create_left(['ffenc','hunks'])
+""    let g:airline_section_x = airline#section#create(['filetype'])
+""    let g:airline_section_y = airline#section#create(['%P'])
+""    let g:airline_section_z = airline#section#create_right(['%l','%c'])
+""endfunction
+""autocmd VimEnter * call AirlineInit()
 
 "--主题
-color desert "设置背景主题
 syntax enable "打开语法高亮
 syntax on "语法高亮
-syntax enable
 set background=dark
 colorscheme solarized
 let g:solarized_termcolors=256
@@ -71,6 +81,31 @@ let g:solarized_termcolors=256
 "--补全
 call pathogen#infect() " 启用bundle
 filetype plugin indent on "补全前提
+""let g:ycm_key_list_select_completion=['<c-n>']
+""let g:ycm_key_list_select_completion = ['<Down>']
+""let g:ycm_key_list_previous_completion=['<c-p>']
+""let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_collect_identifiers_from_tags_files=1 
+let g:ycm_confirm_extra_conf = 0              " 不用每次提示加载.ycm_extra_conf.py文件
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_show_diagnostics_ui = 0              " 关闭ycm的syntastic
+"let g:ycm_filetype_whitelist = {'c' : 1, 'cpp' : 1, 'java' : 1, 'python' : 1}
+let g:ycm_complete_in_comments = 1                " 评论中也应用补全
+let g:ycm_min_num_of_chars_for_completion = 2     " 两个字开始补全
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_semantic_triggers =  {'c' : ['->', '.'], 'objc' : ['->', '.'], 'ocaml' : ['.', '#'], 'cpp,objcpp' : ['->', '.', '::'], 'php' : ['->', '::'], 'cs,java,javascript,vim,coffee,python,scala,go' : ['.'], 'ruby' : ['.', '::']}
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'gitcommit' : 1,
+      \}
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 set wildmenu   "命令模式用 Tab 补全单行菜单形式显示
 set completeopt=longest,menu "只在补全下拉菜单中显示
 inoremap ( ()<ESC>i
@@ -91,6 +126,17 @@ endfunction
 
 "--鼠标(建议不要用)
 " set mouse=nv "在n(ormal),v(isual),i(nsert),h(elp)模式下使用鼠标。
+
+"NEARDTree"
+map <F3> :NERDTreeToggle<CR>
+imap <F3> <ESC> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.pyc']
+
+"git gutter"
+nmap <F6> :GitGutterSignsToggle<CR>
+let g:gitgutter_signs = 0
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
 
 "------------node配置"
 set runtimepath^=~/.vim/bundle/node 
@@ -113,7 +159,7 @@ map <C-e> $
 
 "--删除
 map <C-k> d$
-map <C-k> <ESC>d$i
+imap <C-k> <ESC>d$i
 map <C-d> x
 imap <C-d> <Del>
 
