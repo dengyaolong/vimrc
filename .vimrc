@@ -81,31 +81,6 @@ let g:solarized_termcolors=256
 "--补全
 call pathogen#infect() " 启用bundle
 filetype plugin indent on "补全前提
-""let g:ycm_key_list_select_completion=['<c-n>']
-""let g:ycm_key_list_select_completion = ['<Down>']
-""let g:ycm_key_list_previous_completion=['<c-p>']
-""let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_collect_identifiers_from_tags_files=1 
-let g:ycm_confirm_extra_conf = 0              " 不用每次提示加载.ycm_extra_conf.py文件
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0              " 关闭ycm的syntastic
-"let g:ycm_filetype_whitelist = {'c' : 1, 'cpp' : 1, 'java' : 1, 'python' : 1}
-let g:ycm_complete_in_comments = 1                " 评论中也应用补全
-let g:ycm_min_num_of_chars_for_completion = 2     " 两个字开始补全
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_semantic_triggers =  {'c' : ['->', '.'], 'objc' : ['->', '.'], 'ocaml' : ['.', '#'], 'cpp,objcpp' : ['->', '.', '::'], 'php' : ['->', '::'], 'cs,java,javascript,vim,coffee,python,scala,go' : ['.'], 'ruby' : ['.', '::']}
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'gitcommit' : 1,
-      \}
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 set wildmenu   "命令模式用 Tab 补全单行菜单形式显示
 set completeopt=longest,menu "只在补全下拉菜单中显示
 inoremap ( ()<ESC>i
