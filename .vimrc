@@ -141,3 +141,6 @@ imap <C-d> <Del>
 "--tabe中移动
 map <S-Left> :tabp<CR>
 map <S-Right> :tabn<CR>
+
+"--  C-i 代替Esc
+imap <C-i> <ESC>
