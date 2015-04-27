@@ -21,10 +21,10 @@ set fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,gb18030 "文件编码
 set helplang=cn  "帮助文档语言为中文
 
 "--缩进
-set ts=4 "一个tab 4个空格
-set sw=4 "自动缩进时 4个空格
+set ts=2 "一个tab 2个空格
+set sw=2 "自动缩进时 2个空格
 set et   "将tab置为空格
-set smarttab "一个backspace删除tab生成的4个空格
+set smarttab "一个backspace删除tab生成的2个空格
 set autoindent   "自动缩进
 
 "--处理临时文件
@@ -83,21 +83,6 @@ call pathogen#infect() " 启用bundle
 filetype plugin indent on "补全前提
 set wildmenu   "命令模式用 Tab 补全单行菜单形式显示
 set completeopt=longest,menu "只在补全下拉菜单中显示
-inoremap ( ()<ESC>i
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap { {<CR>}<ESC>O
-inoremap } <c-r>=ClosePair('}')<CR>
-inoremap [ []<ESC>i
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap " ""<ESC>i
-inoremap ' ''<ESC>i
-function! ClosePair(char)
-if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endfunction
 
 "--鼠标(建议不要用)
 " set mouse=nv "在n(ormal),v(isual),i(nsert),h(elp)模式下使用鼠标。
